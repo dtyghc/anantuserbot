@@ -141,10 +141,10 @@ async def caschecker(event):
         text += banned_users
         if not cas_count:
             text = "No CAS Banned users found!"
-    except ChatAdminRequiredError:
+    except ChatAdminRequiredError as carerr:
         await catevent.edit("`CAS check failed: Admin privileges are required`")
         return
-    except BaseException:
+    except BaseException as be:
         await catevent.edit("`CAS check failed`")
         return
     await catevent.edit(text)
@@ -190,10 +190,10 @@ async def caschecker(event):
         text += banned_users
         if not cas_count:
             text = "No spamwatch Banned users found!"
-    except ChatAdminRequiredError:
+    except ChatAdminRequiredError as carerr:
         await catevent.edit("`spamwatch check failed: Admin privileges are required`")
         return
-    except BaseException:
+    except BaseException as be:
         await catevent.edit("`spamwatch check failed`")
         return
     await catevent.edit(text)

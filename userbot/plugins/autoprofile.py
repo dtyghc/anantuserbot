@@ -443,15 +443,8 @@ async def _(event):
             "s": "To stop custom pfp",
         },
         "usage": [
-            "{tr}cpfp or {tr}custompfp <to start>",
+            "{tr}cpfp - to start",
             "{tr}cpfp <flags> <links(optional)>",
-        ],
-        "examples": [
-            "{tr}cpfp",
-            "{tr}cpfp -l",
-            "{tr}cpfp -s",
-            "{tr}cpfp -a link1 link2...",
-            "{tr}cpfp -r link1 link2...",
         ],
     },
 )
