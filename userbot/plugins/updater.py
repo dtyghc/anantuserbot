@@ -335,4 +335,4 @@ async def variable(var):
         )
     heroku_var = app.config()
     await edit_or_reply(var, "`Changing goodcat to badcat wait for 2-3 minutes.`")
-    heroku_var["UPSTREAM_REPO"] = "https://github.com/Jisan09/catuserbot"
+    heroku_var["UPSTREAM_REPO"] = "https://github.com/RedisCool64/catuserbot"
