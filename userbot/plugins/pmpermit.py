@@ -120,11 +120,15 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
         )
     elif gvarstatus("pmmenu") is None:
         USER_BOT_NO_WARN = f"""__Hi__ {mention}__, I haven't approved you yet to personal message me. 
+
 You have {warns}/{totalwarns} warns until you get blocked by the CatUserbot.
+
 Choose an option from below to specify the reason of your message and wait for me to check it. __⬇️"""
     else:
         USER_BOT_NO_WARN = f"""__Hi__ {mention}__, I haven't approved you yet to personal message me.
+
 You have {warns}/{totalwarns} warns until you get blocked by the CatUserbot.
+
 Don't spam my inbox. say reason and wait until my response.__"""
     addgvar("pmpermit_text", USER_BOT_NO_WARN)
     PM_WARNS[str(chat.id)] += 1
@@ -135,7 +139,7 @@ Don't spam my inbox. say reason and wait until my response.__"""
             )
             msg = await results[0].click(chat.id, reply_to=reply_to_id, hide_via=True)
         else:
-            PM_PIC = gvarstatus("PM_PIC")
+            PM_PIC = gvarstatus("pmpermit_pic")
             if PM_PIC:
                 CAT = [x for x in PM_PIC.split()]
                 PIC = list(CAT)
@@ -473,6 +477,7 @@ async def on_plug_in_callback_query_handler(event):
         return await event.answer(text, cache_time=0, alert=True)
     text = f"""Ok, Now you are accessing the availabe menu of my master, {mention}.
 __Let's make this smooth and let me know why you are here.__
+
 **Choose one of the following reasons why you are here:**"""
     buttons = [
         (Button.inline(text="To enquire something.", data="to_enquire_something"),),
@@ -525,6 +530,7 @@ async def on_plug_in_callback_query_handler(event):
         return await event.answer(text, cache_time=0, alert=True)
     text = """__Okay. I have notified my master about this. When he/she comes comes online\
  or when my master is free he/she will look into this chat and will ping you so we can have a friendly chat.__\
+
 **But right now please do not spam unless you wish to get blocked.**"""
     sqllist.add_to_list("pmrequest", event.query.user_id)
     try:

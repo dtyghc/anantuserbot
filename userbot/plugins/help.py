@@ -19,7 +19,6 @@ hemojis = {
     "tools": "🧰",
     "utils": "🗂",
     "extra": "➕",
-    "useless": "⚰️",
 }
 
 
@@ -65,7 +64,7 @@ async def cmdinfo(input_str, event, plugin=False):
         category = getkey(plugin)
         if category is not None:
             outstr += f"**Category :** `{category}`\n\n"
-    outstr += f"**✘ Intro :**\n{about[0]}"
+    outstr += f"**✘  Intro :**\n{about[0]}"
     return outstr
 
 
@@ -87,11 +86,11 @@ async def plugininfo(input_str, event, flag):
     if category is not None:
         outstr += f"**Category :** `{category}`\n\n"
     for cmd in sorted(cmds):
-        outstr += f"**✘ Cmd :** `{cmdprefix}{cmd}`\n"
+        outstr += f"•  **cmd :** `{cmdprefix}{cmd}`\n"
         try:
-            outstr += f"**➥ Info :** __{CMD_INFO[cmd][1]}__\n\n"
+            outstr += f"•  **info :** `{CMD_INFO[cmd][1]}`\n\n"
         except IndexError:
-            outstr += "**➥ Info :** `None`\n\n"
+            outstr += "•  **info :** `None`\n\n"
     outstr += f"**👩‍💻 Usage : ** `{cmdprefix}help <command name>`\
         \n**Note : **If command name is same as plugin name then use this `{cmdprefix}help -c <command name>`."
     return outstr
@@ -100,7 +99,7 @@ async def plugininfo(input_str, event, flag):
 async def grpinfo():
     outstr = "**Plugins in Catuserbot are:**\n\n"
     outstr += f"**👩‍💻 Usage : ** `{cmdprefix}help <plugin name>`\n\n"
-    category = ["admin", "bot", "fun", "misc", "tools", "utils", "extra", "useless"]
+    category = ["admin", "bot", "fun", "misc", "tools", "utils", "extra"]
     for cat in category:
         plugins = GRP_INFO[cat]
         outstr += f"**{hemojis[cat]} {cat.title()} **({len(plugins)})\n"
@@ -192,7 +191,7 @@ async def _(event):
             return await edit_delete(event, "__Invalid plugin name recheck it.__")
         except Exception as e:
             return await edit_delete(event, f"**Error**\n`{e}`")
-        outstr = f"**✘ {input_str.title()} has {len(cmds)} commands**\n"
+        outstr = f"• **{input_str.title()} has {len(cmds)} commands**\n"
         for cmd in cmds:
             outstr += f"  - `{cmdprefix}{cmd}`\n"
         outstr += f"**👩‍💻 Usage : ** `{cmdprefix}help -c <command name>`"

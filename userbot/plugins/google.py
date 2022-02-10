@@ -11,13 +11,12 @@ from PIL import Image
 from search_engine_parser import BingSearch, GoogleSearch, YahooSearch
 from search_engine_parser.core.exceptions import NoResultsOrTrafficError
 
-from userbot import catub
+from userbot import BOTLOG, BOTLOG_CHATID, catub
 
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.functions import deEmojify
 from ..helpers.utils import reply_id
-from . import BOTLOG, BOTLOG_CHATID
 
 opener = urllib.request.build_opener()
 useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36"
@@ -141,19 +140,6 @@ async def gsearch(q_event):
             BOTLOG_CHATID,
             "Google Search query `" + match + "` was executed successfully",
         )
-
-
-@catub.cat_cmd(
-    pattern="gis ([\s\S]*)",
-    command=("gis", plugin_category),
-    info={
-        "header": "Google search in image format",
-        "usage": "{tr}gis <query>",
-        "examples": "{tr}gis cat",
-    },
-)
-async def _(event):
-    "To search in google and send result in picture."
 
 
 @catub.cat_cmd(
